@@ -1,0 +1,56 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <form class="controller-form">
+      <div class="wave">
+        <h4>BRAINMELTER - <small>Protect yourself with headphones!</small></h4>
+        <template v-for="wave in waveForms">
+          <label>
+            <input type="radio" :value="wave" v-model="form.waveForm">
+            {{ wave }}
+          </label>
+        </template>
+      </div>
+      <div class="frequency">
+        <h3>Frequency</h3>
+        <input type="number" min="0" max="20000" v-model="form.freq">
+        <input type="range" min="0" max="20000" step="any" v-model="form.freq">
+      </div>
+    </form>
+    <div class="osc-controller">
+      <button type="button" @click="start">Start</button>
+      <button type="button" @click="stop">Stop</button>
+    </div>
+  </div>
+
+<script>
+  new Vue({
+  el: '#app',
+  data() {
+    return {
+      ctx: new AudioContext(),
+      osc: null,
+      form: {
+        waveForm: 'sine',
+        freq: 440
+      },
+      waveForms: ['sine', 'square', 'sawtooth', 'triangle']
+    }
+  },
+  updated() {
+    this.osc.frequency.value = this.form.freq;
+      this.osc.type = this.form.waveForm;
+  },
+  methods: {
+    start() {
+      this.osc = this.ctx.createOscillator();
+      this.osc.connect(this.ctx.destination);
+      this.osc.frequency.value = this.form.freq;
+      this.osc.type = this.form.waveForm;
+      this.osc.start();
+    },
+    stop() {
+      this.osc.stop();
+    }
+  }
+});
+</script>
