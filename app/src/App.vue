@@ -1,5 +1,4 @@
 <template>
-  
 <div id="app">
     <div class="mx-auto max-w-sm overflow-hidden shadow-lg">
       <div class="px-6 py-4">
@@ -11,7 +10,7 @@
             <h3 class="mt-3 text-center w-full py-2 px-3 leading-tight bg-red-800 text-gray-200">Wave shape</h3>
             <div class=" shadow-md wave rounded border px-5 py-2 text-sm">
               <div class="radio-group">
-                <div v-for="wave in waveForms">
+                <div v-for="wave in waveForms" v-bind:key="wave">
                 <input type="radio" v-model="form.waveForm" :value="wave" :id="wave" name="selector"><label
                   :for="wave">{{wave}}</label>
                 </div>
@@ -19,14 +18,10 @@
             </div>
             <div class=" shadow-md border frequency my-8">
               <h3 class=" text-center w-full py-2 px-3 leading-tight bg-indigo-800 text-gray-200">Frequency Hz</h3>
-              <input
-                class="text-center  appearance-none  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="number" min="0" max="20000" v-model="form.freq | roundHz">
               <input class="w-11/12 m-3 text-gray-700 leading-tight focus:outline-none" type="range" min="0" max="20000"
                 step="any" v-model="form.freq">
             </div>
           </form>
-        </p>
       </div>
       <div class="px-6 py-4 text-center">
         <button @click="start"
@@ -40,7 +35,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -85,7 +79,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   input[type=radio] {
     position: absolute;
     visibility: hidden;
