@@ -1,6 +1,7 @@
 <template>
 <div id="app">
     <div class="mx-auto max-w-sm overflow-hidden shadow-lg">
+        <img class="w-full" scr="@../assets/background.jpeg">
       <div class="px-6 py-4">
         <div class="shadow-lg absolute font-bold text-gray-200 text-xl top-0 pt-5">BRAINMELTER</div>
         <div class="shadow-lg mb-5 absolute text-gray-200 top-0 pt-10"><small>Protect yourself with headphones!</small>
