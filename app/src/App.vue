@@ -1,7 +1,7 @@
 <template>
 <div id="app">
     <div class="mx-auto max-w-sm overflow-hidden shadow-lg">
-        <img class="w-full" scr="@../assets/background.jpeg">
+      <img src="@/assets/background.jpeg" class="w-full">
       <div class="px-6 py-4">
         <div class="shadow-lg absolute font-bold text-gray-200 text-xl top-0 pt-5">BRAINMELTER</div>
         <div class="shadow-lg mb-5 absolute text-gray-200 top-0 pt-10"><small>Protect yourself with headphones!</small>
@@ -153,7 +153,7 @@ input[type=range]::-moz-range-track {
 }
 input[type=range]::-moz-range-thumb {
   box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 2px solid #gray;
+  border: 2px solid gray;
   height: 20px;
   width: 39px;
   border-radius: 7px;
